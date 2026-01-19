@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.chat.controller.ChatController"
+            stylesheets="@../css/styles.css"
+            style="-fx-background-color: linear-gradient(to bottom, #f5f7fa, #c3cfe2);">
+
+    <top>
+        <VBox spacing="5" style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -fx-padding: 15 20;">
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button fx:id="backButton" text="← Voltar"
+                        onAction="#handleBack"
+                        style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 20;"
+                        styleClass="button" />
+
+                <VBox spacing="3">
+                    <Label fx:id="roomLabel"
+                           style="-fx-font-size: 18px; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    <Label fx:id="statusLabel"
+                           style="-fx-font-size: 12px; -fx-text-fill: rgba(255,255,255,0.8);" />
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <HBox spacing="5" alignment="CENTER_RIGHT">
+                    <Text text="●"
+                          style="-fx-fill: #4CAF50; -fx-font-size: 16;" />
+                    <Label text="Conectado"
+                           style="-fx-text-fill: white; -fx-font-size: 12px;" />
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.8" style="-fx-padding: 20;">
+            <!-- Área principal do chat -->
+            <VBox spacing="15">
+                <!-- Área de mensagens -->
+                <VBox VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 2);">
+                    <TextArea fx:id="chatArea"
+                              style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-family: 'Segoe UI', Arial, sans-serif; -fx-font-size: 14px; -fx-padding: 20;"
+                              editable="false"
+                              wrapText="true" />
+                </VBox>
+
+                <!-- Área de input -->
+                <HBox spacing="10" alignment="CENTER"
+                      style="-fx-background-color: white; -fx-background-radius: 25; -fx-padding: 10 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    <TextField fx:id="messageField"
+                               promptText="Digite sua mensagem..."
+                               style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px;"
+                               HBox.hgrow="ALWAYS" />
+
+                    <Button fx:id="sendButton" text="Enviar"
+                            onAction="#handleSendMessage"
+                            style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10 25;"
+                            styleClass="button" />
+                </HBox>
+
+                <!-- Status e dicas -->
+                <HBox spacing="15" alignment="CENTER_LEFT"
+                      style="-fx-padding: 10; -fx-background-color: rgba(255,255,255,0.7); -fx-background-radius: 10;">
+                    <Label text="💡 Pressione Enter para enviar"
+                           style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="typingLabel"
+                           style="-fx-font-size: 12px; -fx-font-style: italic; -fx-text-fill: #667eea;" />
+                </HBox>
+            </VBox>
+
+            <!-- Painel de usuários - SIMPLIFICADO (removendo cellFactory problemático) -->
+            <VBox spacing="10" style="-fx-padding: 0 0 0 20;">
+                <VBox spacing="10"
+                      style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 2);">
+                    <Label text="👥 Participantes"
+                           style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #333; -fx-padding: 0 0 10 0;" />
+
+                    <!-- ListView simplificado -->
+                    <ListView fx:id="usersListView"
+                              style="-fx-background-color: transparent; -fx-border-color: #eee; -fx-border-radius: 10;" />
+
+                    <Separator style="-fx-padding: 10 0;" />
+
+                    <VBox spacing="8">
+                        <Label text="📊 Estatísticas"
+                               style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #333;" />
+                        <HBox spacing="10">
+                            <Label text="Online:"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+                            <Label fx:id="onlineCountLabel" text="0"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #667eea;" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label text="Mensagens:"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+                            <Label fx:id="messageCountLabel" text="0"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #667eea;" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

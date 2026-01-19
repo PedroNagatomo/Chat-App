@@ -1,0 +1,17 @@
+com\chat\service\ApiService.class
+com\chat\ChatClientApplication.class
+com\chat\controller\ChatController.class
+com\chat\service\WebSocketService.class
+com\chat\model\User.class
+com\chat\service\ApiService$1.class
+com\chat\service\ApiService$2.class
+com\chat\model\Message.class
+com\chat\TestWebSocketEndpoints$1.class
+com\chat\TestWebSocketEndpoints.class
+com\chat\model\ChatRoom.class
+com\chat\service\ApiService$3.class
+com\chat\controller\MainController$1.class
+com\chat\controller\ChatController$1.class
+com\chat\controller\MainController.class
+com\chat\service\WebSocketService$1.class
+com\chat\controller\LoginController.class
