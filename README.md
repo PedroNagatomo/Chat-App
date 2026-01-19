@@ -1,4 +1,4 @@
-# ChatFX — Aplicação de Chat em Tempo Real
+# Chat-App — Aplicação de Chat em Tempo Real
 
 [![Java](https://img.shields.io/badge/Java-17+-orange)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-17+-blue)](https://openjfx.io/)
